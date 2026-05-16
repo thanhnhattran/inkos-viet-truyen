@@ -47,6 +47,33 @@ describe("public short-hit chain", () => {
     expect(() => validateShortHitDraftForFinal(draft, { expectedChapters: 2 })).not.toThrow();
   });
 
+  it("recovers chapter content when a model repeats the title tag instead of the content tag", () => {
+    const draft = parseShortHitBatchDraft(`
+=== SHORT_HIT_TITLE ===
+离婚协议签好那天，我甩出十三页证据清单
+=== CHAPTER 1 TITLE ===
+藏在婚纱照后面的摄像头
+=== CHAPTER 1 CONTENT ===
+我摘下婚纱照，看到墙后那个针孔摄像头还亮着红点。
+=== CHAPTER 2 TITLE ===
+她逼小三亲自递上了最后的刀
+=== CHAPTER 2 TITLE ===
+陈磊的慌张，是一个信号。
+林晚等了三天，没有去找陈磊，也没有再发短信。
+第三天傍晚，贺言打来电话：“上钩了，苏念又给陈磊妻子转了五十万。”
+=== CHAPTER 3 TITLE ===
+他砸了家，但没算到我在直播
+=== CHAPTER 3 TITLE ===
+凌晨三点，陆景琛踹开老宅院门，举着铁棍砸碎电视。
+林晚坐在闺蜜家，把早就准备好的直播链接发给了董事会。
+`, { expectedChapters: 3 });
+
+    expect(draft.chapters[1]?.title).toBe("她逼小三亲自递上了最后的刀");
+    expect(draft.chapters[1]?.content).toContain("陈磊的慌张");
+    expect(draft.chapters[2]?.content).toContain("直播链接");
+    expect(() => validateShortHitDraftForFinal(draft, { expectedChapters: 3 })).not.toThrow();
+  });
+
   it("uses the previous draft as assistant context for the second writer pass", async () => {
     const firstDraft = parseShortHitBatchDraft(`
 === SHORT_HIT_TITLE ===

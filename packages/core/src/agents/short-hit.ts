@@ -257,6 +257,7 @@ export function parseShortHitBatchDraft(
     );
     const content = sanitizeChapterContent(
       extractTaggedBlock(rawContent, `CHAPTER ${number} CONTENT`)
+      || extractDuplicateTitleTaggedChapterContent(rawContent, number)
       || extractMarkdownChapterContent(rawContent, number)
       || "",
     );
@@ -352,6 +353,19 @@ function extractMarkdownChapterTitle(raw: string, number: number): string {
 function extractMarkdownChapterContent(raw: string, number: number): string {
   const pattern = new RegExp(`^##\\s*(?:第\\s*${number}\\s*章\\s*)?.*$\\n([\\s\\S]*?)(?=^##\\s*(?:第\\s*${number + 1}\\s*章\\s*)?.*$|(?![\\s\\S]))`, "m");
   return pattern.exec(raw)?.[1]?.trim() ?? "";
+}
+
+function extractDuplicateTitleTaggedChapterContent(raw: string, number: number): string {
+  const escapedTag = `CHAPTER ${number} TITLE`.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const titlePattern = new RegExp(`^\\s*===\\s*${escapedTag}\\s*===\\s*$`, "gim");
+  const matches = Array.from(raw.matchAll(titlePattern));
+  const duplicateTitle = matches[1];
+  if (!duplicateTitle || duplicateTitle.index === undefined) return "";
+
+  const start = duplicateTitle.index + duplicateTitle[0].length;
+  const rest = raw.slice(start).replace(/^\s*\n/, "");
+  const nextTag = rest.search(/^\\s*===\\s*(?:CHAPTER\\s+\\d+\\s+(?:TITLE|CONTENT)|SHORT_HIT_[A-Z0-9_ ]+)\\s*===\\s*$/im);
+  return (nextTag >= 0 ? rest.slice(0, nextTag) : rest).trim();
 }
 
 function sanitizeChapterContent(raw: string): string {
