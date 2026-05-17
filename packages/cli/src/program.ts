@@ -24,7 +24,7 @@ import { analyticsCommand } from "./commands/analytics.js";
 import { evalCommand } from "./commands/eval.js";
 import { importCommand } from "./commands/import.js";
 import { fanficCommand } from "./commands/fanfic.js";
-import { shortCommand } from "./commands/short.js";
+import { shortCommand } from "./commands/short-fiction.js";
 import { createStudioCommand, launchStudioEntry } from "./commands/studio.js";
 import { consolidateCommand } from "./commands/consolidate.js";
 import { createInteractCommand, type InteractCommandHooks } from "./commands/interact.js";

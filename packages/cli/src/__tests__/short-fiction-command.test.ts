@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { createProgram } from "../program.js";
-import { extractResponsesImageBase64, resolveCoverApiKey } from "../commands/short.js";
+import { extractResponsesImageBase64, resolveCoverApiKey } from "../commands/short-fiction.js";
 
 describe("short command", () => {
   it("registers public short run command", () => {
