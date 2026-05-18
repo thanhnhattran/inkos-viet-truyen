@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.4.1
+
+### Release Focus
+
+Windows / provider 热修与长篇写作提速配置化：修复 MiniMax 默认端点不通的问题，保留长篇默认一轮自动修稿的速度收益，同时允许项目把自动修稿轮数配置回 3。
+
+### Improvements
+
+- 长篇章节写作的自动审稿修稿轮数新增 `writing.reviewRetries` 项目配置，默认仍为 1；需要更强修稿时可执行 `inkos config set writing.reviewRetries 3`
+- Studio 写章链路会读取同一项目配置，CLI 和 Studio 行为保持一致
+- README / 开发说明同步 v1.4.1 的 MiniMax 与长篇写作配置变化
+
+### Bug Fixes
+
+- 修复 MiniMax 默认 provider 仍指向已不可用的 Anthropic 端点，导致 Windows 原生环境测试连接失败的问题
+- 修复 MiniMax endpoint 元数据覆盖逻辑过宽，可能影响其他服务商路由判断的问题
+
 ## v1.4.0
 
 ### Release Focus
