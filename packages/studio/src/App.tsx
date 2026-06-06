@@ -128,7 +128,7 @@ export function App() {
                className="inline-flex items-center gap-2 rounded-lg border border-border/50 bg-card/70 px-3 py-1.5 text-sm font-semibold text-foreground hover:bg-secondary/50 transition-colors"
              >
                <House size={14} />
-               <span>首页</span>
+               <span>Home</span>
                <span className="text-muted-foreground/70">/</span>
                <span className="font-serif">InkOS Studio</span>
              </button>

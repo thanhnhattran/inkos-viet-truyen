@@ -7,9 +7,9 @@ interface ServiceQuickLink {
 
 const SERVICE_QUICK_LINKS: Record<string, ReadonlyArray<ServiceQuickLink>> = {
   kkaiapi: [
-    { label: "官网", href: "https://kkaiapi.com/" },
-    { label: "API 文档", href: "https://kkaiapi.com/docs" },
-    { label: "模型/价格", href: "https://kkaiapi.com/models" },
+    { label: "Website", href: "https://kkaiapi.com/" },
+    { label: "API Docs", href: "https://kkaiapi.com/docs" },
+    { label: "Models / Pricing", href: "https://kkaiapi.com/models" },
   ],
   openrouter: [
     { label: "API Keys", href: "https://openrouter.ai/keys" },

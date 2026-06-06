@@ -240,7 +240,7 @@ export function ServiceDetailPage({ serviceId, nav }: { serviceId: string; nav: 
         className="inline-flex items-center gap-2 rounded-lg border border-border/50 bg-card/60 px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary/50 transition-colors"
       >
         <ArrowLeft size={14} />
-        返回服务商管理
+        Back to Service Provider Management
       </button>
 
       {/* Title + status */}
@@ -289,12 +289,12 @@ export function ServiceDetailPage({ serviceId, nav }: { serviceId: string; nav: 
           <button onClick={handleTest} disabled={isBusy}
             className="flex items-center gap-1.5 px-3.5 py-2 text-xs rounded-lg border border-border/60 hover:bg-secondary/50 transition-colors disabled:opacity-50">
             {status.state === "testing" && <Loader2 size={12} className="animate-spin" />}
-            测试连接
+            Test Connection
           </button>
           <button onClick={handleSave} disabled={isBusy}
             className="flex items-center gap-1.5 px-3.5 py-2 text-xs rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50">
             {status.state === "saving" && <Loader2 size={12} className="animate-spin" />}
-            保存
+            Save
           </button>
           {(isConnected || isCustom) && (
             <button onClick={handleDelete} disabled={isBusy}
@@ -319,7 +319,7 @@ export function ServiceDetailPage({ serviceId, nav }: { serviceId: string; nav: 
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          <Field label="协议类型">
+          <Field label="Protocol">
             <select
               value={apiFormat}
               onChange={(e) => setApiFormat(e.target.value as "chat" | "responses")}
@@ -330,14 +330,14 @@ export function ServiceDetailPage({ serviceId, nav }: { serviceId: string; nav: 
             </select>
           </Field>
 
-          <Field label="流式响应">
+          <Field label="Streaming">
             <label className="flex h-10 items-center gap-2 rounded-lg border border-border/60 bg-background px-3 text-sm">
               <input
                 type="checkbox"
                 checked={stream}
                 onChange={(e) => setStream(e.target.checked)}
               />
-              <span>{stream ? "开启" : "关闭"}</span>
+              <span>{stream ? "Enabled" : "关闭"}</span>
             </label>
           </Field>
         </div>
@@ -365,7 +365,7 @@ export function ServiceDetailPage({ serviceId, nav }: { serviceId: string; nav: 
         {/* Advanced params */}
         <details className="group pt-2 border-t border-border/20">
           <summary className="text-xs text-muted-foreground/60 cursor-pointer select-none hover:text-muted-foreground transition-colors py-2">
-            高级参数
+            Advanced
           </summary>
           <div className="space-y-4 pt-2">
             <Field label="temperature">

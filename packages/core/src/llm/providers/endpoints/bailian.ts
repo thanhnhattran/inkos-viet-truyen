@@ -24,7 +24,7 @@ import type { InkosEndpoint } from "../types.js";
 
 export const BAILIAN: InkosEndpoint = {
   id: "bailian",
-  label: "百炼 (通义千问)",
+  label: "百炼 / Bailian (通义千问 / Qwen)",
   group: "china",
   api: "anthropic-messages",
   baseUrl: "https://dashscope.aliyuncs.com/apps/anthropic",

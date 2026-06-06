@@ -574,7 +574,7 @@ export function Sidebar({ nav, activePage, sse, t }: {
               disabled={!renameValue.trim()}
               className="px-3 py-1 text-xs font-medium rounded-md bg-foreground text-background hover:opacity-90 transition-opacity disabled:opacity-30"
             >
-              保存
+              Save
             </button>
           </DialogFooter>
         </DialogContent>
@@ -582,7 +582,7 @@ export function Sidebar({ nav, activePage, sse, t }: {
 
       <ConfirmDialog
         open={deleteTarget !== null}
-        title="删除会话"
+        title="Delete Session"
         message={`确认删除“${deleteTarget?.title ?? ""}”吗？该操作只删除这条会话，不影响书籍内容。`}
         confirmLabel="删除"
         cancelLabel="取消"

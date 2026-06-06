@@ -40,7 +40,7 @@ function ServiceCard({ svc, onClick }: { svc: ServiceInfo; onClick: () => void }
           <span className={`h-1.5 w-1.5 rounded-full shrink-0 ${svc.connected ? "bg-emerald-500" : "bg-muted-foreground/30"}`} />
         </div>
         <span className="text-xs text-muted-foreground/60">
-          {svc.connected ? "已连接" : "未配置"}
+          {svc.connected ? "Connected" : "Not configured"}
         </span>
       </button>
       {quickLinks.length > 0 && (
@@ -135,10 +135,10 @@ function CoverConfigCard() {
         body: JSON.stringify({ service: provider.service, model }),
       });
       setStatus("saved");
-      setMessage("封面配置已保存");
+      setMessage("Cover config saved");
     } catch (error) {
       setStatus("error");
-      setMessage(error instanceof Error ? error.message : "保存封面配置失败");
+      setMessage(error instanceof Error ? error.message : "Save Cover Config失败");
     }
   };
 
@@ -148,9 +148,9 @@ function CoverConfigCard() {
     <section className="rounded-xl border border-border/50 bg-card/50 p-4 space-y-3">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <h2 className="text-sm font-medium text-foreground">封面生成</h2>
+          <h2 className="text-sm font-medium text-foreground">Cover Generation</h2>
           <p className="mt-1 text-xs text-muted-foreground/70">
-            只配置封面通道和模型；封面尺寸由短篇封面提示词和内部默认处理。
+            Configure cover generation provider and model only. Cover size is handled by the short-fiction cover prompt and internal defaults.
           </p>
         </div>
         {selected?.connected && (
@@ -162,7 +162,7 @@ function CoverConfigCard() {
 
       <div className="grid gap-3 md:grid-cols-2">
         <label className="space-y-1.5">
-          <span className="block text-xs font-medium text-muted-foreground/70">服务</span>
+          <span className="block text-xs font-medium text-muted-foreground/70">Service</span>
           <select
             value={service}
             onChange={(event) => handleServiceChange(event.target.value)}
@@ -174,7 +174,7 @@ function CoverConfigCard() {
           </select>
         </label>
         <label className="space-y-1.5">
-          <span className="block text-xs font-medium text-muted-foreground/70">封面模型</span>
+          <span className="block text-xs font-medium text-muted-foreground/70">Cover Model</span>
           <select
             value={model}
             onChange={(event) => setModel(event.target.value)}
@@ -214,7 +214,7 @@ function CoverConfigCard() {
           className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3.5 py-2 text-xs text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-50"
         >
           {status === "saving" && <Loader2 size={12} className="animate-spin" />}
-          保存封面配置
+          Save Cover Config
         </button>
         {selected?.baseUrl && (
           <span className="text-xs text-muted-foreground/60">
@@ -312,13 +312,13 @@ export function ServiceListPage({ nav }: { nav: Nav }) {
           onClick={nav.toDashboard}
           className="inline-flex items-center rounded-lg border border-border/50 bg-card/60 px-3 py-1.5 font-medium text-foreground hover:bg-secondary/50 transition-colors"
         >
-          首页
+          Home
         </button>
         <span className="text-border">/</span>
-        <span className="text-foreground">服务商管理</span>
+        <span className="text-foreground">Service Provider Management</span>
       </div>
 
-      <h1 className="font-serif text-2xl">服务商管理</h1>
+      <h1 className="font-serif text-2xl">Service Provider Management</h1>
 
       <CoverConfigCard />
 
@@ -328,7 +328,7 @@ export function ServiceListPage({ nav }: { nav: Nav }) {
           type="text"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="搜索服务商"
+          placeholder="Search providers"
           className="w-full rounded-lg border border-border/60 bg-background py-2 pl-9 pr-9 text-sm outline-none focus:border-primary/50"
         />
         {query && (
@@ -388,7 +388,7 @@ export function ServiceListPage({ nav }: { nav: Nav }) {
           checked={onlyConnected}
           onChange={(event) => setOnlyConnected(event.target.checked)}
         />
-        <span>只看已连接 ({connectedCount})</span>
+        <span>Connected only ({connectedCount})</span>
       </label>
 
       <div className="h-px bg-border/30" />

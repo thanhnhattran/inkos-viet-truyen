@@ -35,7 +35,7 @@ export const SERVICE_PRESETS: Record<string, ServicePreset> = {
     providerFamily: "anthropic",
     api: "anthropic-messages",
     baseUrl: "https://dashscope.aliyuncs.com/apps/anthropic",
-    label: "百炼 (通义千问)",
+    label: "百炼 / Bailian (通义千问 / Qwen)",
     temperatureRange: [0, 2],
     defaultTemperature: 0.7,
     writingTemperature: 1.0,
